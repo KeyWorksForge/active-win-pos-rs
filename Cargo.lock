@@ -9,6 +9,7 @@ dependencies = [
  "appkit-nsworkspace-bindings",
  "core-foundation",
  "core-graphics",
+ "detect-desktop-environment",
  "hyprland",
  "kdotool",
  "objc",
@@ -342,6 +343,12 @@ dependencies = [
  "syn",
  "unicode-xid",
 ]
+
+[[package]]
+name = "detect-desktop-environment"
+version = "1.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "64eafefc26270510306f258e5223cc405d606dec7c8305bd4370832f90541484"
 
 [[package]]
 name = "digest"

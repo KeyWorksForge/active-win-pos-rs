@@ -1,8 +1,11 @@
+use core::panic;
 use std::env;
 use std::fs::read_link;
 
 use hyprland::data::Client;
 use hyprland::prelude::HyprDataActiveOptional;
+
+use detect_desktop_environment::DesktopEnvironment::{self, Cinnamon, Kde};
 
 use crate::{ActiveWindow, WindowPosition};
 
@@ -50,5 +53,10 @@ fn try_kwin() -> Option<ActiveWindow> {
 }
 
 pub fn get_active_window_wayland() -> Option<ActiveWindow> {
-    try_kwin().or_else(try_hyprland)
+    match DesktopEnvironment::detect() {
+        Some(DesktopEnvironment::Kde) => try_kwin(),
+        Some(DesktopEnvironment::Hyprland) => try_hyprland(),
+        Some(de) => panic!(),
+        None => panic!(),
+    }
 }
