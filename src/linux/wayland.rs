@@ -1,4 +1,3 @@
-use core::panic;
 use std::println;
 use std::{env, process::Command};
 use std::fs::read_link;
@@ -191,7 +190,6 @@ pub fn get_active_window_wayland() -> Option<ActiveWindow> {
         Some(DesktopEnvironment::Kde) => try_kwin(),
         Some(DesktopEnvironment::Hyprland) => try_hyprland(),
         Some(DesktopEnvironment::Gnome) => try_gnome(),
-        Some(de) => panic!(),
-        None => panic!(),
+        _ => None,
     }
 }
